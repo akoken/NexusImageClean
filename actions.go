@@ -61,9 +61,9 @@ func listTagsByImage(c *cli.Context) error {
 	tpl := table.NewWriter()
 	tpl.SetOutputMirror(os.Stdout)
 	tpl.SetStyle(table.StyleLight)
-	tpl.AppendHeader(table.Row{"ComponentID", "AssetID", "Path", "ImageName", "TagName", "Type", "Leaf"})
+	tpl.AppendHeader(table.Row{"ComponentID", "AssetID", "Path", "ImageName", "TagName", "Type", "Leaf", "Date"})
 	for _, tag := range tagsRes.Result.Data {
-		tpl.AppendRow([]interface{}{tag.ComponentID, tag.AssetID, tag.ID, imgName, tag.Text, tag.Type, tag.Leaf})
+		tpl.AppendRow([]interface{}{tag.ComponentID, tag.AssetID, tag.ID, imgName, tag.Text, tag.Type, tag.Leaf, tag.Date})
 	}
 	tpl.AppendFooter(table.Row{"Total", len(tagsRes.Result.Data), "", ""})
 	tpl.Render()
